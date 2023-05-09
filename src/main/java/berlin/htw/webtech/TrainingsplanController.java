@@ -3,6 +3,9 @@ package berlin.htw.webtech;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class TrainingsplanController {
 
@@ -30,6 +33,15 @@ public class TrainingsplanController {
 
         service.save(updateTrainingsplan);
         return updateTrainingsplan;
+    }
+
+    @DeleteMapping("/trainingsplan/{id}")
+    public Map<String, Boolean> deleteTrainingsplan(@PathVariable String id){
+        Trainingsplan trainingsplan = service.get(Long.parseLong(id));
+        service.delete(trainingsplan);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted",Boolean.TRUE);
+        return response;
     }
 
 /*testkommentar*/

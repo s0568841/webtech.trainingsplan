@@ -16,4 +16,10 @@ public class TrainingsplanService {
     public Trainingsplan get(Long id){
     return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
+
+
+    public Trainingsplan delete(Trainingsplan trainingsplan){
+    repo.delete(trainingsplan);
+    return trainingsplan;
+    }
 }
