@@ -1,4 +1,4 @@
-# webtech.trainingsplan
+# webtech.benchPress
 
 Ich möchte eine Trainingsplan Application erstellen, dessen anfängliche Hauptfunktionen in dem Erstellen 
 von Übungseinheiten besteht in die man das persönliche Fitnesstraining protokollieren kann. 

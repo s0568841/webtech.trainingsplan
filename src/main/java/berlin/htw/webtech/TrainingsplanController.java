@@ -12,33 +12,33 @@ public class TrainingsplanController {
     @Autowired
     TrainingsplanService service;
 
-    @PostMapping("/trainingsplan")
-    public Trainingsplan createTrainingsplan (@RequestBody Trainingsplan trainingsplan){
-        return service.save(trainingsplan);
+    @PostMapping("/bench_press")
+    public benchPress createBenchPress (@RequestBody benchPress benchPress){
+        return service.save(benchPress);
     }
 
-    @GetMapping("/trainingsplan/{id}")
-    public Trainingsplan getTrainingsplan (@PathVariable String id){
+    @GetMapping("/bench_press/{id}")
+    public benchPress getBenchPress (@PathVariable String id){
         Long trainingsplanId = Long.parseLong(id);
         return service.get(trainingsplanId);
     }
 
-    @PutMapping("/trainingsplan/{id}")
-    public Trainingsplan updateTrainingsplan (@PathVariable String id, @RequestBody Trainingsplan trainingsplan){
-        Trainingsplan updateTrainingsplan = service.get(Long.parseLong(id));
+    @PutMapping("/bench_press/{id}")
+    public benchPress updateBenchPress (@PathVariable String id, @RequestBody benchPress benchPress){
+        benchPress updateBenchPress = service.get(Long.parseLong(id));
 
-        updateTrainingsplan.setExercise(trainingsplan.getExercise());
-        updateTrainingsplan.setRepetitions(trainingsplan.getRepetitions());
-        updateTrainingsplan.setWeight(trainingsplan.getWeight());
+        updateBenchPress.setRepetitions(benchPress.getRepetitions());
+        updateBenchPress.setWeight(benchPress.getWeight());
+        updateBenchPress.setBenchPressDate(benchPress.getBenchPressDate());
 
-        service.save(updateTrainingsplan);
-        return updateTrainingsplan;
+        service.save(updateBenchPress);
+        return updateBenchPress;
     }
 
-    @DeleteMapping("/trainingsplan/{id}")
+    @DeleteMapping("/bench_press/{id}")
     public Map<String, Boolean> deleteTrainingsplan(@PathVariable String id){
-        Trainingsplan trainingsplan = service.get(Long.parseLong(id));
-        service.delete(trainingsplan);
+        benchPress benchPress = service.get(Long.parseLong(id));
+        service.delete(benchPress);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted",Boolean.TRUE);
         return response;
