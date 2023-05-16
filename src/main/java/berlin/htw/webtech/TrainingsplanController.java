@@ -12,33 +12,33 @@ public class TrainingsplanController {
     @Autowired
     TrainingsplanService service;
 
-    @PostMapping("/bench_press")
-    public benchPress createBenchPress (@RequestBody benchPress benchPress){
-        return service.save(benchPress);
+    @PostMapping("/Exercise")
+    public Exercise createExercise (@RequestBody Exercise Exercise){
+        return service.save(Exercise);
     }
 
-    @GetMapping("/bench_press/{id}")
-    public benchPress getBenchPress (@PathVariable String id){
+    @GetMapping("/Exercise/{id}")
+    public Exercise getExercise (@PathVariable String id){
         Long trainingsplanId = Long.parseLong(id);
         return service.get(trainingsplanId);
     }
 
-    @PutMapping("/bench_press/{id}")
-    public benchPress updateBenchPress (@PathVariable String id, @RequestBody benchPress benchPress){
-        benchPress updateBenchPress = service.get(Long.parseLong(id));
+    @PutMapping("/Exercise/{id}")
+    public Exercise updateExercise (@PathVariable String id, @RequestBody Exercise Exercise){
+        Exercise updateExercise = service.get(Long.parseLong(id));
 
-        updateBenchPress.setRepetitions(benchPress.getRepetitions());
-        updateBenchPress.setWeight(benchPress.getWeight());
-        updateBenchPress.setBenchPressDate(benchPress.getBenchPressDate());
+        updateExercise.setRepetitions(Exercise.getRepetitions());
+        updateExercise.setWeight(Exercise.getWeight());
+        updateExercise.setExerciseDate(Exercise.getExerciseDate());
 
-        service.save(updateBenchPress);
-        return updateBenchPress;
+        service.save(updateExercise);
+        return updateExercise;
     }
 
-    @DeleteMapping("/bench_press/{id}")
+    @DeleteMapping("/Exercise/{id}")
     public Map<String, Boolean> deleteTrainingsplan(@PathVariable String id){
-        benchPress benchPress = service.get(Long.parseLong(id));
-        service.delete(benchPress);
+        Exercise Exercise = service.get(Long.parseLong(id));
+        service.delete(Exercise);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted",Boolean.TRUE);
         return response;

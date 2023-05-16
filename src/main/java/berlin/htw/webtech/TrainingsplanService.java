@@ -9,17 +9,17 @@ public class TrainingsplanService {
     @Autowired
     TrainingsplanRepository repo;
 
-    public benchPress save(benchPress benchPress){
-    return repo.save(benchPress);
+    public Exercise save(Exercise Exercise){
+    return repo.save(Exercise);
     }
 
-    public benchPress get(Long id){
+    public Exercise get(Long id){
     return repo.findById(id).orElseThrow(() -> new RuntimeException());
     }
 
 
-    public benchPress delete(benchPress benchPress){
-    repo.delete(benchPress);
-    return benchPress;
+    public Exercise delete(Exercise Exercise){
+    repo.delete(Exercise);
+    return Exercise;
     }
 }
