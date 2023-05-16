@@ -14,7 +14,6 @@ public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String exerciseName;
     private int weight;
     private int repetitions;

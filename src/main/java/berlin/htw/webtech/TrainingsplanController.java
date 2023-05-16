@@ -27,9 +27,12 @@ public class TrainingsplanController {
     public Exercise updateExercise (@PathVariable String id, @RequestBody Exercise Exercise){
         Exercise updateExercise = service.get(Long.parseLong(id));
 
+        updateExercise.setExerciseName(Exercise.getExerciseName());
         updateExercise.setRepetitions(Exercise.getRepetitions());
         updateExercise.setWeight(Exercise.getWeight());
+        updateExercise.setExerciseTime(Exercise.getExerciseTime());
         updateExercise.setExerciseDate(Exercise.getExerciseDate());
+        updateExercise.setMyFitnessCategory(Exercise.getMyFitnessCategory());
 
         service.save(updateExercise);
         return updateExercise;
