@@ -19,12 +19,13 @@ public class Exercise {
     private int repetitions;
     private LocalTime exerciseTime;
     private LocalDate exerciseDate;
-    private FitnessCategory myFitnessCategory;
+    private FitnessCategory myFitnessCategory = FitnessCategory.NO_STATUS;
     enum FitnessCategory{
         MACHINE_WORKOUT,
         FREE_WEIGHT,
         BODY_WEIGHT,
-        GENERAL_FITNESS
+        GENERAL_FITNESS,
+        NO_STATUS
     }
 
     public Long getId() {
@@ -75,11 +76,11 @@ public class Exercise {
         this.exerciseDate = benchPressDate;
 
     }
-
+    //Man muss möglicherweise einen String suchen
     public FitnessCategory getMyFitnessCategory() {
         return myFitnessCategory;
     }
-
+    //Man muss möglicherweise einen String übergeben mit der enum.valueOf(String) Methode.
     public void setMyFitnessCategory(FitnessCategory myFitnessCategory) {
         this.myFitnessCategory = myFitnessCategory;
     }

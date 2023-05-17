@@ -38,6 +38,17 @@ public class TrainingsplanController {
         return updateExercise;
     }
 
+    @PatchMapping("/Exercise/{id}")
+    public Exercise updateExercisePartially (@PathVariable String id, @PathVariable String exerciseName,
+                                             @PathVariable int weight, @PathVariable int repititions, @PathVariable Exercise.FitnessCategory myFitnessCat){
+        Exercise updateExercisePartially = service.get(Long.parseLong(id));
+
+        updateExercisePartially.setExerciseName(exerciseName);
+        updateExercisePartially.setWeight(weight);
+        updateExercisePartially.setRepetitions(repititions);
+        updateExercisePartially.setMyFitnessCategory(myFitnessCat);
+    }
+
     @DeleteMapping("/Exercise/{id}")
     public Map<String, Boolean> deleteTrainingsplan(@PathVariable String id){
         Exercise Exercise = service.get(Long.parseLong(id));
