@@ -47,6 +47,9 @@ public class TrainingsplanController {
         updateExercisePartially.setWeight(weight);
         updateExercisePartially.setRepetitions(repititions);
         updateExercisePartially.setMyFitnessCategory(myFitnessCat);
+
+        service.save(updateExercisePartially);
+        return updateExercisePartially;
     }
 
     @DeleteMapping("/Exercise/{id}")
