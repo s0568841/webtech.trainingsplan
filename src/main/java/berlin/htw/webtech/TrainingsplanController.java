@@ -39,14 +39,13 @@ public class TrainingsplanController {
     }
 
     @PatchMapping("/Exercise/{id}")
-    public Exercise updateExercisePartially (@PathVariable String id, @PathVariable String exerciseName,
-                                             @PathVariable int weight, @PathVariable int repititions, @PathVariable Exercise.FitnessCategory myFitnessCat){
+    public Exercise updateExercisePartially (@PathVariable String id, @RequestBody Exercise exercise){
         Exercise updateExercisePartially = service.get(Long.parseLong(id));
 
-        updateExercisePartially.setExerciseName(exerciseName);
-        updateExercisePartially.setWeight(weight);
-        updateExercisePartially.setRepetitions(repititions);
-        updateExercisePartially.setMyFitnessCategory(myFitnessCat);
+        updateExercisePartially.setExerciseName(exercise.getExerciseName());
+        updateExercisePartially.setWeight(exercise.getWeight());
+        updateExercisePartially.setRepetitions(exercise.getRepetitions());
+        updateExercisePartially.setMyFitnessCategory(exercise.getMyFitnessCategory());
 
         service.save(updateExercisePartially);
         return updateExercisePartially;
